@@ -14,7 +14,7 @@ class myPDO extends PDO
 	{
 		try {
 			parent::__construct( config::db_dsn, config::db_user, config::db_pass, config::$db_opt );
-			$this->setAttribute( PDO::ATTR_STATEMENT_CLASS,  array('myPDOStatement')); // Set Statement_Class
+			$this->setAttribute( PDO::ATTR_STATEMENT_CLASS,  array('myPDOStatement') ); // Set Statement_Class
 		} catch (PDOException $e) {
 			if( $_SERVER['REQUEST_URI'] != '/db404' ) { // to be implemented
 				die($e->getMessage());
@@ -35,7 +35,7 @@ class myPDO extends PDO
 */
 class myPDOStatement extends PDOStatement
 {
-	public function execute ()
+	public function execute ( $bound_input_params = NULL )
 	{
 		$arr = func_get_args();
 		$input_parameters = is_array($arr[0]) ? $arr[0] : $arr ;

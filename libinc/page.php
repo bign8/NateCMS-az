@@ -1,5 +1,7 @@
 <?php
 
+require_once('site_inc.php');
+
 class PageClass {
 	public $pageVals	= array();
 	public $content		= array();
@@ -18,7 +20,9 @@ class PageClass {
 	}
 	
 	public function Run() {
-		$page = $_SERVER['REDIRECT_URL']; // $_SERVER['REDIRECT_URL']; // or 'SCRIPT_URL'
+		print_r($_SERVER);
+		//die();
+		$page = $_SERVER['REQUEST_URI']; // $_SERVER['REDIRECT_URL']; // or 'SCRIPT_URL'
 		//$page = substr( $page, 0, strrpos( $page, "?"));
 
 		if(strrchr($page, "/") == "/") {
