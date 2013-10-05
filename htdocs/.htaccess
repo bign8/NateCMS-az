@@ -1,13 +1,13 @@
 #ErrorDocument 404 /404
-DirectoryIndex /nate/htdocs/handler.php # does this work?
+DirectoryIndex /handler.php # does this work?
 
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase /nate/htdocs/
+RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !/user.php$
-RewriteRule . /nate/htdocs/handler.php [L]
+RewriteRule . /handler.php [L]
 </IfModule>
 
 Options -Indexes
