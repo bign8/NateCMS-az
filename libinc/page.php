@@ -22,8 +22,8 @@ class PageClass {
 	public function Run() {
 		$page = $_SERVER['REQUEST_URI']; // $_SERVER['REDIRECT_URL']; // or 'SCRIPT_URL'
 
-		// echo $page . '<br/>';
-		//$page = substr( $page, 0, strrpos( $page, "?"));
+		// Remove query string
+		$page = substr( $page, 0, strrpos( $page, "?"));
 
 		if( strrchr($page, "/") == "/" ) {
 			$page .= 'index'; // add index to each directory
