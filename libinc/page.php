@@ -23,16 +23,16 @@ class PageClass {
 		$page = $_SERVER['REQUEST_URI']; // $_SERVER['REDIRECT_URL']; // or 'SCRIPT_URL'
 
 		// Remove query string
-		$page = substr( $page, 0, strrpos( $page, "?"));
+		if ( strpos($page,'?') !== false ) $page = substr( $page, 0, strrpos( $page, "?"));
 
 		if( strrchr($page, "/") == "/" ) {
 			$page .= 'index'; // add index to each directory
 		} else {
 			if ( config::Extension != '' ) {
-				if ( strrchr($page, '.'.config::Extension) == '.'.config::Extension ) { // if it ends with extension
-					$page = substr( $page, 0, strrpos( $page, '.'.config::Extension ) ); // enforce extensions
+				if ( strrchr($page, config::Extension) == config::Extension ) { // if it ends with extension
+					$page = substr( $page, 0, strrpos( $page, config::Extension ) ); // enforce extensions
 				} else { // redirect to file with extension
-					header( 'Location: ' . $page . '.' . config::Extension ) ;
+					header( 'Location: ' . $page . config::Extension ) ;
 					die();
 				}
 				
@@ -46,6 +46,7 @@ class PageClass {
 		$tpl	= $smarty->createTemplate('runner.tpl');
 		
 		//*
+		$tpl->assign('page', 		$page . config::Extension);
 		$tpl->assign('header',		$this->pageVals['header']); // just pass whole array
 		$tpl->assign('body',		$this->pageVals['body']); // would have to rewrite pagevals
 		$tpl->assign('footer',		$this->pageVals['footer']); // see below for attempt

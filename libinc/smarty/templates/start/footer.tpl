@@ -7,11 +7,11 @@
 		<ul>
 		{if $isEditer}
 			{if !isset($smarty.get.mode) || $smarty.get.mode != 'edit'}
-				<li><a href="{$smarty.server.REQUEST_URI}?mode=edit" class="ui-icon ui-icon-pencil" title="Edit Page">Edit</a></li>
+				<li><a href="{$page}?mode=edit" class="ui-icon ui-icon-pencil" title="Edit Page">Edit</a></li>
 			{else}
 				<li id="orderDisable" style="display:none"><a href="#shuffle!" class="ui-icon ui-icon-check" title="Save Re-order" onclick="return Editor.orderDisable();">Save Re-order</a></li>
 				<li id="orderEnable"><a href="#shuffle!" class="ui-icon ui-icon-shuffle" title="Re-order Content" onclick="return Editor.orderEnable();">Re-order Content</a></li>
-				<li><a href="{$smarty.server.REQUEST_URI}" class="ui-icon ui-icon-circle-close" title="Close Editor">Close</a></li>
+				<li><a href="{$page}" class="ui-icon ui-icon-circle-close" title="Close Editor">Close</a></li>
 			{/if}
 			{*<a href="/logout">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;*}
 			<li><a href="/user.php?action=forceLogout" onclick="return General.logout()" class="ui-icon ui-icon-power" title="Logout of Editor">Logout</a></li>
