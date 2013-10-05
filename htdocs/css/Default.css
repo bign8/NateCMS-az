@@ -60,12 +60,12 @@ body {
 	width:800px;
 	text-align:left;
 	margin:50px auto;
-	border:1px solid gray;
+	border:1px solid #c8c8c8;
 	background-color:white;
 	border-radius:15px;
 	-moz-border-radius:15px;
 	-webkit-border-radius:15px;
-	box-shadow:0 0 40px gray;
+	box-shadow:0 0 40px #c8c8c8;
 }
 header {
 	height:100px;
@@ -76,29 +76,15 @@ header {
 	border-radius:10px 10px 0 0;
 	-moz-border-radius:10px 10px 0 0;
 	-webkit-border-radius:10px 10px 0 0;
-}/*
-#styleNav ul {
-	padding:10px;
-	margin: 5px;
-	height: 15px;
-	background:grey;
-	border-radius:10px;
-	-moz-border-radius:10px;
-	-webkit-border-radius:10px;
 }
-#styleNav ul li {
-	list-style: none;
-	float: left;
-	padding-right: 10px;
-}*/
 #body {
 	
 }
-#left {
+#nav {
 	float:left;
 	width: 300px;
 }
-#right {
+#main {
 	float:right;
 	width: 500px;
 }
@@ -132,7 +118,7 @@ p:last-child { margin-bottom: 0 }
 }
 #editorNav ul li {
 	display: inline;
-	margin-left: 10px;
+	/*margin-left: 10px; With the links being icons, this is not needed*/
 }
 #editorNav ul li:first-child {
 	margin-left: 0;
@@ -144,13 +130,18 @@ p:last-child { margin-bottom: 0 }
 	text-decoration: underline;
 }
 
+.ui-icon {
+	display: inline-block; /* SHAME.CSS this is to fix the shuffle icon in the editor bar *//* !important*/
+}
+
 /* EDITER styles */
-#right .block , #right .block-edit {margin:5px;padding:10px;background-color:#eee;}
-#left .block , #left .block-edit {margin:5px 0 5px 5px;padding:10px;background-color:#eee;}
-#left .block-edit {margin-right: 5px;} /* editer fix*/ 
+#main .block , #main .block-edit {margin:5px;padding:10px;background-color:#eee;}
+#nav .block , #nav .block-edit {margin:5px 0 5px 5px;padding:10px;background-color:#eee;}
+/*#nav .block-edit {margin-right: 5px;} /* editer fix*/
 .block-state-highlight {border:2px dashed #aaa;margin:5px;padding:10px;text-align:center;color:#777;}
-.sortable {background-color:#fff;margin:5px;border:2px dashed #aaaaaa;}
+.sortable {background-color:#fff;/*margin:5px;*//*border:2px dashed #aaaaaa;*/}
 .controls {float:right;margin:0 0 4px 4px;}
+.controls span {float:left;}
 .add-new {text-align:center;}
 .loading {width:16px;height:16px;background-image:url(/images/ajax-loader.gif); }
 .emph { color: #C00000; }
@@ -158,16 +149,3 @@ p:last-child { margin-bottom: 0 }
 
 /* fix dialog size */
 .ui-dialog{font-size: 80%;}
-
-/* editor specific */
-.block-edit.text div.truncated { max-height:150px; overflow:hidden;}
-.block-edit.text span.continued { float:right; position:relative; top:-10px; right:-5px;}
-
- /* location select so sizes can be explizit */
-/*
-#left .mceEditor > table {
-    width:247px !important;
-}
-#right .mceEditor > table {
-    width:447px !important;
-}*/
