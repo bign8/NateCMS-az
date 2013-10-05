@@ -20,18 +20,25 @@ class PageClass {
 	}
 	
 	public function Run() {
-		print_r($_SERVER);
-		//die();
 		$page = $_SERVER['REQUEST_URI']; // $_SERVER['REDIRECT_URL']; // or 'SCRIPT_URL'
+
+		// echo $page . '<br/>';
 		//$page = substr( $page, 0, strrpos( $page, "?"));
 
-		if(strrchr($page, "/") == "/") {
+		if( strrchr($page, "/") == "/" ) {
 			$page .= 'index'; // add index to each directory
 		} else {
-			if (config::Extension != '') {
-				$page = substr( $page, 0, strrpos( $page, '.'.config::Extension ) ); // enforce extensions
+			if ( config::Extension != '' ) {
+				if ( strrchr($page, '.'.config::Extension) == '.'.config::Extension ) { // if it ends with extension
+					$page = substr( $page, 0, strrpos( $page, '.'.config::Extension ) ); // enforce extensions
+				} else { // redirect to file with extension
+					header( 'Location: ' . $page . '.' . config::Extension ) ;
+					die();
+				}
+				
 			}
 		}
+
 		//echo 'Page: ', $page, '<pre>', print_r($_SERVER, true), '</pre>';
 		self::getPage($page);
 		
@@ -107,6 +114,13 @@ class PageClass {
 		} else {
 			// send proper error messages including refferer and client ip address
 			
+			// check for db error?
+			if ( $url == '/404' ) {
+				echo '<pre>';
+				print_r( $this->DBH->errorInfo() );
+				die('Unsolved Error!'); // This occurs when the view definer does not exist in the database users table
+			}
+
 			$this->is404 = true;
 			self::getPage("/404");
 		}
