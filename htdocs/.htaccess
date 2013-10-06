@@ -2,12 +2,12 @@
 DirectoryIndex /handler.php # does this work?
 
 <IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteBase /
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !/user.php$
-RewriteRule . /handler.php [L]
+	RewriteEngine On
+	RewriteBase /
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule . /handler.php [L]
 </IfModule>
 
 Options -Indexes
