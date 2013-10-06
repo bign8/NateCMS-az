@@ -13,7 +13,7 @@ var textEditObj = {
 		var obj = $(that);
 
 		obj.on('startEdit', function(evt){
-			textEditObj.init(evt.target);
+			textEditObj.init( evt.target );
 		});
 		obj.on('enableMove', function(evt){
 			if (obj.find('.content').height() >= 50) {
@@ -50,7 +50,7 @@ var textEditObj = {
 			// Woods Callbacks
 			save_oncancelcallback: 'textEditObj.checkSave',
 			save_onsavecallback: 'textEditObj.save',
-			init_instance_callback: function(inst) { 
+			init_instance_callback: function(inst) {
 				textEditObj[inst.editorId] = {
 					content: inst.getContent(), // content after editer did magic
 					id: id,
@@ -89,7 +89,7 @@ var textEditObj = {
 		editor.setProgressState(1); // Show progress
 		this[eid].content = editor.getContent();
 		
-		Editer.updateContent(this[eid].id, this[eid].content, function() {editor.setProgressState(0);});
+		Editor.updateContent(this[eid].id, this[eid].content, function() {editor.setProgressState(0);});
 	},
 	checkSave: function(editor) {
 		var eid = editor.editorId;
