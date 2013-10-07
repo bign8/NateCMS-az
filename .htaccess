@@ -2,7 +2,7 @@
 	RewriteEngine On
 	RewriteBase /
 
-	RewriteCond %{REQUEST_URI} ^/(.+)\.(png|jpg|gif|css|js|php) [NC]
+	RewriteCond %{REQUEST_URI} ^/(.+)\.(png|jpg|gif|css|js|php|htm) [NC]
 	RewriteRule . /htdocs/%1.%2 [L,NC]
 
 	RewriteRule . /htdocs/handler.php [L,NC]
