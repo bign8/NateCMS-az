@@ -3,10 +3,10 @@
 		{foreach from=$content[$id] item=foo}{include file=$foo['editer'] item=$foo}{/foreach}
 	{/if}
 	{* Add new content form *}
-	<div class="block add-new" onClick="Editer.displayAddForm(this)">
+	<div class="block add-new" onClick="Editor.displayAddForm(this)">
 		<span class="add-new-text">Click Here to add a new content block</span>
-		<form class="add-new-form" style="display:none;" onreset="Editer.revert(this)" onsubmit="Editer.addContent({$vfsID}, '{$id}', this); return false;" >
-			<select name="type_id" onchange="Editer.loadDesc(this)">
+		<form class="add-new-form" style="display:none;" onreset="Editor.revert(this)" onsubmit="Editor.addContent({$vfsID}, '{$id}', this); return false;" >
+			<select name="type_id" onchange="Editor.loadDesc(this)">
 				<option value="null">-- Select --</option>
 				{foreach from=$blocks item=foo}
 					<option value="{$foo.blockID}" data-desc="{$foo.description}">{$foo.name}</option>

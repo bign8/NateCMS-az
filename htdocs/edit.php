@@ -11,6 +11,7 @@ switch ($_REQUEST['action']) {
 	case 'removeContent': echo $edt->removeContent($_REQUEST['remID']); break;
 	case 'addContent': echo $edt->addContent($_REQUEST['vfsID'], $_REQUEST['loc'], $_REQUEST['blockID']); break;
 	case 'updateContent': echo $edt->updateContent($_REQUEST['cID'], $_REQUEST['content']); break;
+	case 'insertPage': echo $edt->insertPage($_REQUEST['path']); break;
 	
 	default: echo "Your Kung-Fu is not strong!";
 }

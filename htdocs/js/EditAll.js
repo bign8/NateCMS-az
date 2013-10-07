@@ -25,6 +25,21 @@ var Editor = {
 
 	// --- GENERAL EDITOR FUNCTIONS ---
 
+	makePage: function() {
+		$.ajax({
+			url:'/edit.php',
+			data:'action=insertPage&path=' + document.location.pathname,
+			success:function(txt){
+				if (txt == 'check') {
+					document.location.reload();
+				} else {
+					alert('There has been an error with your request.\nPlease contact the developers');
+				}
+			}
+		});
+		return false;
+	},
+
 	// initBlock is called in initilize the editer on each editable block
 	initBlock: function(index, that) {
 		// Load block edit menu on each edit block
@@ -172,6 +187,9 @@ var Editor = {
 				if (json.check != 'check') Editor.updateError();
 				var newObj = $('#' + loc).append(json.html).fadeIn('slow').children().last(); // selects last child
 				Editor.initBlock(-1, newObj); // initilized editor on newObj
+				$('#' + loc + ' .add-new').appendTo('#' + loc); // move add content link to bottom
+
+				document.location.reload(); // need to re-design here to we have forced dependencies - can't init textEdit or any specific listeners
 				
 				// script insertion parser
 				var temp, srcObj;

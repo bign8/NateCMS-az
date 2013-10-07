@@ -17,8 +17,8 @@
 		{else}
 			<li><a href="/user.php?action=forceLogin" onclick="return General.login()" class="ui-icon ui-icon-key" title="Login to Editor">Login</a></li>
 		{/if}
-		{if $isEditer && $is404}
-			<li><a href="/newPage" class="ui-icon ui-icon-document" title="Make this a page">Create page</a></li>{* only show if correct extension *}
+		{if isset($smarty.get.mode) && $smarty.get.mode == 'edit' && $is404}
+			<li><a href="/newPage" onclick="return Editor.makePage();" class="ui-icon ui-icon-document" title="Make this a page">Create page</a></li>{* only show if correct extension *}
 		{/if}
 		</ul>
 	</div>
