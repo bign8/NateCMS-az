@@ -47,6 +47,8 @@ class PageClass {
 		
 		//*
 		$tpl->assign('page', 		$page . config::Extension);
+		$tpl->assign('cPage', 		$page);
+		$tpl->assign('extension', 	config::Extension);
 		$tpl->assign('header',		$this->pageVals['header']); // just pass whole array
 		$tpl->assign('body',		$this->pageVals['body']); // would have to rewrite pagevals
 		$tpl->assign('footer',		$this->pageVals['footer']); // see below for attempt

@@ -95,7 +95,9 @@ class Edit {
 			}
 		}
 
-		$this->db->prepare("INSERT INTO `web_vfs` (`parentID`, `templateID`, `path`, `short`, `title`, `keywords`, `description`, `visible`, `secure`) VALUES ('1', '1', ?, NULL, 'Blank', 'Blank,Blank,Blank', 'Blank', 'yes', 'no');")->execute( $page );
+		// FIND ACTUAL PARENT
+
+		$this->db->prepare("INSERT INTO `web_vfs` (`parentID`, `templateID`, `path`, `short`, `title`, `keywords`, `description`, `visible`, `secure`) VALUES (?, '1', ?, NULL, 'Blank', 'Blank,Blank,Blank', 'Blank', 'yes', 'no');")->execute( '1', $page );
 
 
 		return ($this->db->errorCode()==0)?'check':'noCheck';
